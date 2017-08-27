@@ -8,7 +8,29 @@ $(function () {
                 url: 'https://jsonplaceholder.typicode.com/users',
                 dataType: 'json',
                 success: function(response) {
+                   var beginOfData = document.createElement('p');
+                    var endOfData = document.createElement('p');
                     
+                    beginOfData.innerHTML = '<br>--------BEGIN OF DATA ------<br><br>';
+                    endOfData.innerHTML = '<br>----------END OF DATA-------<br><br>';
+                    
+                    document.body.appendChild(beginOfData);
+                    
+                    response.forEach(function(element){
+                        var pUserId = document.createElement('p');
+                        var pUserName = document.createElement('p');
+                        var pUserURL = document.createElement('p');
+                        
+                        pUserId.innerHTML = "ID "+element.id;
+                        pUserName.innerHTML = element.username;
+                        pUserURL.innerHTML = element.website;
+                        
+                        document.body.appendChild(pUserId);
+                        document.body.appendChild(pUserName);
+                        document.body.appendChild(pUserURL);
+                        
+                    });
+                    document.body.appendChild(endOfData);
                 },
                 onerror: function(error) {
                     
